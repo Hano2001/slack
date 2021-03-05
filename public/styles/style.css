@@ -1,0 +1,53 @@
+body {
+  background-color: darkgoldenrod;
+}
+
+div {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  background-color: coral;
+}
+h1 {
+  background-color: aqua;
+  text-align: center;
+}
+
+nav {
+  display: grid;
+  border: solid white;
+  width: 100px;
+  background-color: orange;
+  border-radius: 20px;
+}
+input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+p {
+  color: white;
+  background-color: black;
+  padding: 10px;
+  margin: 10px;
+  border: solid white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border-radius: 10px;
+}
+p:hover {
+  background-color: white;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
