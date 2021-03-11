@@ -8,6 +8,7 @@ const expressEjsLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const router = express.Router();
 
+app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
 
