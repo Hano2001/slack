@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <link rel="stylesheet" href="/public/styles/style.css" />
+    <title>Document</title>
   </head>
   <body>
     <form action="/users/register" method="POST">
+      <%- include('partials/messages')%>
       <label for="name">Name:</label>
       <input type="text" name="name" />
       <label for="username">Username:</label>
@@ -17,7 +19,10 @@
       <br />
       <label for="password">Password:</label>
       <input type="password" name="password" />
-      <input type="submit" value="Register" />
+      <label for="passwordconfirm">Confirm Password:</label>
+      <input type="password" name="passwordconfirm" />
+      <br />
+      <button type="submit" class="btn btn-success">Register</button>
     </form>
   </body>
 </html>

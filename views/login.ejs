@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
+    <link rel="stylesheet" href="/public/styles/style.css" />
+    <title>Document</title>
   </head>
-  <body>
-    <form action="/login" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" />
-      <br />
-      <label for="password">Password:</label>
-      <input type="password" name="password" />
-    </form>
-  </body>
+  <body></body>
 </html>
+<form action="/users/login" method="POST">
+  <%- include('partials/messages')%>
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username" required />
+  <br />
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" required />
+  <br />
+  <button class="btn btn-warning btn-block" type="submit">Log in</button>
+</form>
+
+<a href="/users/register">If you're new, create an account here!</a>

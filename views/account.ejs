@@ -1,0 +1,47 @@
+<table class="userinfo">
+  <tr>
+    <th>Name</th>
+    <td><%=user.name%></td>
+    <td>
+      <form
+        id="name_edit"
+        class="edit"
+        action="/users/account/:id"
+        method="POST"
+      >
+        <input type="text" />
+        <button type="submit">Update</button>
+      </form>
+    </td>
+    <td><button id="edit_name">Update name</button></td>
+  </tr>
+  <tr>
+    <th>Username</th>
+    <td><%=user.username%></td>
+    <td>
+      <form
+        id="username_edit"
+        class="edit"
+        action="/users/account/:id"
+        method="POST"
+      >
+        <input type="text" name="test" />
+        <button type="submit">Update</button>
+      </form>
+    </td>
+    <td><button id="edit_username">Update username</button></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%=user.email%></td>
+    <td>
+      <form id="email_edit" class="edit" action="/users/account" method="PUT">
+        <input type="text" />
+        <button type="submit">Update</button>
+      </form>
+    </td>
+    <td><button id="edit_email">Update E-mail</button></td>
+  </tr>
+</table>
+
+<script src="../public/scripts/user-info.js"></script>

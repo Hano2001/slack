@@ -1,8 +1,8 @@
 body {
-  background-color: darkgoldenrod;
+  background-color: rgb(217, 243, 252);
 }
 
-div {
+/* div {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
   position: fixed;
@@ -14,19 +14,19 @@ div {
   box-sizing: border-box;
   backdrop-filter: blur(10px);
   background-color: coral;
-}
+} */
 h1 {
   background-color: aqua;
   text-align: center;
 }
 
-nav {
+/* nav {
   display: grid;
   border: solid white;
   width: 100px;
   background-color: orange;
   border-radius: 20px;
-}
+} */
 input {
   border: none;
   padding: 0 1rem;
@@ -50,4 +50,31 @@ p:hover {
 
 a:link {
   text-decoration: none;
+  color: red;
+}
+
+.chat_container {
+  border: solid black;
+  float: left;
+  margin: 5px;
+  width: 175px;
+  text-align: center;
+  background-color: coral;
+}
+
+.users_container {
+  border: solid black;
+  float: right;
+  margin: 5px;
+  width: 175px;
+  text-align: center;
+  background-color: darkseagreen;
+}
+
+.userinfo {
+  /* border: solid black */
+}
+
+.edit {
+  display: none;
 }
