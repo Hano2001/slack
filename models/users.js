@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  picture: {
+    type: String,
+    default: "../public/uploads/default.png",
+  },
   date: {
     type: Date,
     default: Date.now,

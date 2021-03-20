@@ -1,3 +1,18 @@
+<div class="picDiv">
+  <img class="profile" src="<%=user.picture%>" alt="" />
+
+  <form
+    id="pic_edit"
+    class="edit"
+    action="/users/account/profile-pic"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <input type="file" name="profile_pic" /><br />
+    <input type="submit" value="Upload new Profile-picture" />
+  </form>
+  <Button id="profileBtn">Change Profile-picture</Button>
+</div>
 <table class="userinfo">
   <tr>
     <th>Name</th>
@@ -6,10 +21,10 @@
       <form
         id="name_edit"
         class="edit"
-        action="/users/account/:id"
+        action="/users/account/name"
         method="POST"
       >
-        <input type="text" />
+        <input name="name" type="text" />
         <button type="submit">Update</button>
       </form>
     </td>
@@ -22,10 +37,10 @@
       <form
         id="username_edit"
         class="edit"
-        action="/users/account/:id"
+        action="/users/account/username"
         method="POST"
       >
-        <input type="text" name="test" />
+        <input name="username" type="text" name="test" />
         <button type="submit">Update</button>
       </form>
     </td>
@@ -35,13 +50,18 @@
     <th>Email</th>
     <td><%=user.email%></td>
     <td>
-      <form id="email_edit" class="edit" action="/users/account" method="PUT">
-        <input type="text" />
+      <form
+        id="email_edit"
+        class="edit"
+        action="/users/account/email"
+        method="POST"
+      >
+        <input name="email" type="text" />
         <button type="submit">Update</button>
       </form>
     </td>
     <td><button id="edit_email">Update E-mail</button></td>
   </tr>
 </table>
-
+<%- include('partials/messages')%>
 <script src="../public/scripts/user-info.js"></script>
