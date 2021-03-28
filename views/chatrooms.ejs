@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/styles/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chat rooms</h1>
+    <%- include('partials/messages')%>
+    <div>
+      <div class="chatRoom_container">
+        <h5>Chat Rooms</h5>
+        <!-- Ifall du undrar vade jag tvugen att slice i loopen, blev en tom div i listan på sidan annars! -->
+        <% for(room of rooms.slice(1)){%>
+        <div class="room_name_div">
+          <a class="chat_link" href="/dashboard/chatrooms/<%=room._id%>">
+            <p class="room_name"><%= room.name%></p></a
+          >
+        </div>
+
+        <%}%>
+        <button id="roomBtn">Create new room</button>
+      </div>
+      <div class="room_create_div" id="room_create_div">
+        <form
+          id="roomForm"
+          class="room_form"
+          action="/dashboard/chatrooms"
+          method="POST"
+        >
+          <label for="name">Room name:</label>
+          <input type="text" name="name" />
+          <input type="submit" value="Create Room" />
+        </form>
+      </div>
+    </div>
+
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="../public/scripts/chatrooms.js"></script>
+  </body>
+</html>

@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "../public/uploads/default.png",
   },
+  socketId: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,

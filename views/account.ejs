@@ -4,7 +4,7 @@
   <form
     id="pic_edit"
     class="edit"
-    action="/users/account/profile-pic"
+    action="/dashboard/account/profile-pic"
     method="POST"
     enctype="multipart/form-data"
   >
@@ -21,10 +21,10 @@
       <form
         id="name_edit"
         class="edit"
-        action="/users/account/name"
+        action="/dashboard/account/name"
         method="POST"
       >
-        <input name="name" type="text" />
+        <input name="name" type="text" required />
         <button type="submit">Update</button>
       </form>
     </td>
@@ -37,14 +37,14 @@
       <form
         id="username_edit"
         class="edit"
-        action="/users/account/username"
+        action="/dashboard/account/username"
         method="POST"
       >
-        <input name="username" type="text" name="test" />
+        <input name="username" type="text" name="test" required />
         <button type="submit">Update</button>
       </form>
     </td>
-    <td><button id="edit_username">Update username</button></td>
+    <td><button id="edit_username" required>Update username</button></td>
   </tr>
   <tr>
     <th>Email</th>
@@ -53,10 +53,10 @@
       <form
         id="email_edit"
         class="edit"
-        action="/users/account/email"
+        action="/dashboard/account/email"
         method="POST"
       >
-        <input name="email" type="text" />
+        <input name="email" type="text" required />
         <button type="submit">Update</button>
       </form>
     </td>
@@ -64,4 +64,6 @@
   </tr>
 </table>
 <%- include('partials/messages')%>
+
 <script src="../public/scripts/user-info.js"></script>
+<script src="./../socket.io/socket.io.js"></script>

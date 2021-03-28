@@ -6,16 +6,8 @@ const User = require("../models/users");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const { ensureAuthenticated } = require("../config/auth");
-const Socket = require("socket.io");
-const io = require("socket.io")(http);
-const path = require("path");
-const fileUpload = require("express-fileupload");
 
-router.use(
-  fileUpload({
-    createParentPath: true,
-  })
-);
+const path = require("path");
 
 //Login
 
@@ -23,17 +15,13 @@ router.get("/login", (req, res) => {
   res.render("login", { layout: false });
 });
 
-router.post(
-  "/login",
+router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/users/login",
     failureFlash: true,
-  }),
-  (req, res) => {
-    Socket.username = req.user.username;
-  }
-);
+  })(req, res, next);
+});
 
 //Register
 
@@ -62,12 +50,7 @@ router.post("/register", (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render("register", {
-      errors,
-      name,
-      email,
-      username,
-    });
+    res.render("register", { layout: false, errors, name, email, username });
   } else {
     const newUser = new User({
       name,
@@ -90,103 +73,6 @@ router.post("/register", (req, res) => {
   }
 });
 
-//Account
-router.get("/account", ensureAuthenticated, (req, res) => {
-  res.render("account", { user: req.user });
-});
-
-router.post("/account/name", (req, res) => {
-  User.updateOne({ _id: req.user._id }, { name: req.body.name }, (err, obj) => {
-    if (err) {
-      console.log(err);
-    } else {
-      req.flash("success_msg", "Name Changed!");
-
-      res.redirect("/users/account");
-    }
-  });
-});
-
-router.post("/account/username", (req, res) => {
-  User.updateOne(
-    { _id: req.user._id },
-    { username: req.body.username },
-    (err, obj) => {
-      if (err) {
-        console.log(err);
-      } else {
-        req.flash("success_msg", "Username Changed!");
-        res.redirect("/users/account");
-      }
-    }
-  );
-});
-
-router.post("/account/email", (req, res) => {
-  User.updateOne(
-    { _id: req.user._id },
-    { email: req.body.email },
-    (err, obj) => {
-      if (err) {
-        console.log(err);
-      } else {
-        req.flash("success_msg", "E-mail Changed!");
-        res.redirect("/users/account");
-      }
-    }
-  );
-});
-
-router.post("/account/profile-pic", (req, res) => {
-  console.log(req.body.files);
-  try {
-    if (req.files) {
-      let profilePic = req.files.profile_pic;
-      let fileName = `../public/uploads/${profilePic.name}`;
-      console.log(fileName);
-
-      profilePic.mv(`./public/uploads/${profilePic.name}`);
-
-      User.updateOne(
-        { _id: req.user._id },
-        { picture: fileName },
-        (err, obj) => {
-          if (err) {
-            console.log(err);
-          } else {
-            req.flash("success_msg", "Profile picture updated!");
-            res.redirect("/users/account");
-          }
-        }
-      );
-    } else {
-      console.log("ERROR");
-      req.flash("erro_msg", "something went wrong");
-      res.redirect("/users/account");
-    }
-  } catch (error) {
-    res.send(error);
-  }
-});
-//Socket
-io.on("disconnect", () => {
-  router.get("/logout", (req, res) => {
-    req.logOut();
-    req.flash("success_msg", "You've been logged out");
-    User.updateOne(
-      { username: req.user.username },
-      { online: false },
-      (err, obj) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(obj);
-        }
-        res.redirect("/users/login");
-      }
-    );
-  });
-});
 //Log out
 router.get("/logout", (req, res) => {
   username = req.user.username;

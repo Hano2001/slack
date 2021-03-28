@@ -12,7 +12,7 @@ module.exports = function (passport) {
         }
 
         if (!user) {
-          console.log("Testing");
+          console.log("User don't exist");
           return done(null, false, { message: "Wrong username" });
         }
         console.log("Something");
@@ -24,6 +24,7 @@ module.exports = function (passport) {
           if (isMatch) {
             return done(null, user);
           } else {
+            console.log("Wrong password");
             return done(null, false, { message: "Wrong password" });
           }
         });

@@ -6,9 +6,13 @@ const userNameForm = document.getElementById("username_edit");
 const emailForm = document.getElementById("email_edit");
 const profileBtn = document.getElementById("profileBtn");
 const profileForm = document.getElementById("pic_edit");
+// const success = document.getElementsByClassName("success_message");
+
+// function fadeMessage(x){
+//     setTimeout
+// }
 nameEdit.addEventListener("click", (e) => {
   nameForm.classList.toggle("edit");
-  console.log("hello");
 });
 userNameEdit.addEventListener("click", (e) => {
   userNameForm.classList.toggle("edit");

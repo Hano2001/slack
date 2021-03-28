@@ -7,10 +7,15 @@
     <title>Dashboard</title>
   </head>
   <body>
+    <div
+  id="info"
+  data-user_id="<%=user._id%>"
+  data-socket_id="<%=user.socketId%>";
+></div>
     <h1>Food shack slack</h1>
-    <div class="chat_container">
-      <h5>Chat Rooms</h5>
-    </div>
+    <%- include('partials/messages')%>
+    
+
     <div class="users_container">
       <h5>Online users</h5>
       <ul>
@@ -19,10 +24,11 @@
         <%}%>
       </ul>
     </div>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="../public/scripts/dashboard.js"></script>
+    
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      const socket = io();
-    </script>
-  </body>
+    
+    
+    
 </html>

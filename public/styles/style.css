@@ -2,64 +2,66 @@ body {
   background-color: rgb(217, 243, 252);
 }
 
-/* div {
-  background: rgba(0, 0, 0, 0.15);
-  padding: 0.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-  background-color: coral;
-} */
 h1 {
-  background-color: aqua;
+  background-color: orange;
   text-align: center;
 }
 
-/* nav {
-  display: grid;
-  border: solid white;
-  width: 100px;
+.navbar {
+  border: solid rgb(255, 123, 0);
   background-color: orange;
+  /* border-radius: 20px; */
+}
+
+.navbar-item {
+  background-color: tomato;
   border-radius: 20px;
-} */
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.navbar-item:hover {
+  background-color: white;
+  color: tomato;
+}
 input {
   border: none;
   padding: 0 1rem;
   flex-grow: 1;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   margin: 0.25rem;
 }
-p {
-  color: white;
-  background-color: black;
-  padding: 10px;
-  margin: 10px;
-  border: solid white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  border-radius: 10px;
-}
-p:hover {
-  background-color: white;
-  color: black;
-}
 
-a:link {
-  text-decoration: none;
-  color: red;
-}
-
-.chat_container {
+.chatRoom_container {
   border: solid black;
   float: left;
   margin: 5px;
   width: 175px;
+  height: 500px;
   text-align: center;
   background-color: coral;
+  overflow: scroll;
+}
+.room_name_div {
+  background-color: tomato;
+  border-radius: 10px;
+  margin: 15px;
+}
+.room_name {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.room_name:hover {
+  background-color: white;
+  color: tomato;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .users_container {
@@ -71,12 +73,17 @@ a:link {
   background-color: darkseagreen;
 }
 
-.userinfo {
-  /* border: solid black */
+.edit,
+.room_create_div {
+  display: none;
 }
 
-.edit {
-  display: none;
+.room_form {
+  background-color: orange;
+  border: solid orange;
+  height: 50px;
+  width: 500px;
+  margin: auto;
 }
 
 .profile {
@@ -91,23 +98,116 @@ a:link {
   margin-right: 50px;
   float: left;
 }
-
+.user_input {
+  text-align: center;
+  position: fixed;
+  top: 25%;
+  left: 35%;
+}
 .success_message {
-  color: #ffffff;
-  font-size: 20px;
-  padding: 15px 40px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  animation: fadeOut 2s forwards;
+  animation-delay: 2s;
+  background: rgb(0, 255, 13);
+  color: white;
+  padding: 10px;
   text-align: center;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #00b953;
+}
+.error_message {
+  margin-bottom: 50px;
+  animation: fadeOut 2s forwards;
+  animation-delay: 2s;
+  background: rgb(255, 0, 0);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
 
-  /* border: solid red;
-  background-color: rgba(2, 255, 2, 0.575);
-  width: 250px;
-  height: 120px;
-  margin-left: 50%;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.chat-messages {
+  border-radius: 10px;
   text-align: center;
-  margin-bottom: 25%; */
+  position: fixed;
+  top: 25%;
+  left: 29%;
+  border: solid rgb(255, 115, 0) 15px;
+  margin-left: auto;
+  width: 650px;
+  height: 350px;
+  overflow-y: scroll;
+  background-color: rgb(255, 209, 5);
+}
+.chat_container {
+  border-radius: 10px;
+  position: relative;
+  background-color: salmon;
+  border: solid red;
+  width: 50%;
+  height: 550px;
+  margin: auto;
+  overflow: hidden;
+}
+
+#chat-form {
+  width: 100%;
+  position: absolute;
+  background-color: red;
+  height: 50px;
+  bottom: 0;
+  float: right;
+}
+
+.textMessage {
+  background-color: beige;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+.message-sender {
+  width: 100px;
+  border-radius: 0px 10px 0px 0px;
+  float: right;
+  background-color: rgb(185, 185, 185);
+}
+.message-div,
+.user-message-div,
+.admin-message {
+  text-align: left;
+  margin: auto;
+  border-radius: 15px;
+  margin-top: 15px;
+  width: 500px;
+  border: solid black;
+}
+.message-div {
+  border: solid black;
+  background-color: rgb(18, 164, 248);
+}
+.user-message-div {
+  border: solid black;
+  background-color: rgb(229, 18, 248);
+}
+
+.admin-message {
+  font-style: italic;
+  background-color: rgb(255, 239, 97);
+}
+
+.msg_delete {
+  margin: auto;
+  background-color: orangered;
+}
+
+.msg_delete_disabled {
+  pointer-events: none;
+  background-color: grey;
 }

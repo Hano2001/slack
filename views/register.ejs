@@ -4,25 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="/public/styles/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <form action="/users/register" method="POST">
-      <%- include('partials/messages')%>
-      <label for="name">Name:</label>
-      <input type="text" name="name" />
-      <label for="username">Username:</label>
-      <input type="text" name="username" />
-      <label for="email">E-mail:</label>
-      <input type="text" name="email" />
+    <div class="user_input">
+      <form action="/users/register" method="POST">
+        <table>
+          <tr>
+            <th><label for="name">Name:</label></th>
+            <td>
+              <input type="text" name="name" />
+            </td>
+          </tr>
+          <tr>
+            <th><label for="username">Username:</label></th>
+            <td>
+              <input type="text" name="username" />
+            </td>
+          </tr>
+          <tr>
+            <th><label for="email">E-mail:</label></th>
+            <td>
+              <input type="text" name="email" />
+            </td>
+          </tr>
+          <tr>
+            <th><label for="password">Password:</label></th>
+            <td>
+              <input type="password" name="password" />
+            </td>
+          </tr>
+          <tr>
+            <th><label for="passwordconfirm">Confirm Password:</label></th>
+            <td>
+              <input type="password" name="passwordconfirm" />
+            </td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Register</button>
+      </form>
       <br />
-      <label for="password">Password:</label>
-      <input type="password" name="password" />
-      <label for="passwordconfirm">Confirm Password:</label>
-      <input type="password" name="passwordconfirm" />
+
       <br />
-      <button type="submit" class="btn btn-success">Register</button>
-    </form>
+      <a href="/users/login">Already got an account? Log in here!</a>
+    </div>
+    <%- include('partials/messages')%>
   </body>
 </html>

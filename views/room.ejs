@@ -1,0 +1,41 @@
+<div
+  id="info"
+  data-username="<%=user.username%>"
+  data-user_id="<%=user._id%>"
+  data-room_id="<%=room._id%>"
+></div>
+
+<div class="chat_container">
+  <h1><%=room.name%></h1>
+  <h5>started by: <%=room.starter.username%></h5>
+  <form action="/dashboard/deleteroom/<%=room._id%>" method="GET">
+    <% if (user.username != room.starter.username) {%>
+    <button class="msg_delete_disabled" type="submit">DELETE ROOM</button>
+    <%}%> <% if (user.username === room.starter.username) {%>
+    <button class="msg_delete" type="submit">DELETE ROOM</button>
+    <%}%>
+  </form>
+  <div id="chat-messages" class="chat-messages">
+    <% for (item of room.messages) {%>
+    <div
+      class="<%= item.sender == user.username ? 'user-message-div' : 'message-div' %>"
+    >
+      <p class="message-sender"><%=item.sender%></p>
+      <p><%=item.message%></p>
+      <br />
+    </div>
+    <% if(item.sender == user.username) {%>
+    <form action="/message/delete" method="POST">
+      <button class="msg_delete" id="msg_delete" type="submit">
+        Delete message
+      </button>
+    </form>
+    <%}%> <%}%>
+  </div>
+  <form id="chat-form">
+    <input type="text" name="" id="msg" placeholder="Enter Message" />
+    <input type="submit" value="send" />
+  </form>
+</div>
+<script src="../../socket.io/socket.io.js"></script>
+<script src="../../public/scripts/room.js"></script>

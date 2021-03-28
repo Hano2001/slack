@@ -15,13 +15,14 @@
   </head>
   <body class="text-center">
     <header>
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/dashboard">Home</a>
-          <a class="navbar-brand" href="/users/account"
+          <a class="navbar-item" href="/dashboard">Home</a>
+          <a class="navbar-item" href="/dashboard/chatrooms">Chat Rooms</a>
+          <a class="navbar-item" href="/dashboard/account"
             >Account overview(<%=user.username%>)</a
           >
-          <a class="navbar-brand" href="/users/logout">Log out</a>
+          <a class="navbar-item" href="/users/logout">Log out</a>
         </div>
       </nav>
     </header>
