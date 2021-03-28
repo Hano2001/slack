@@ -9,7 +9,6 @@ const io = socketio(server);
 const expressEjsLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const mongoose = require("mongoose");
-const router = express.Router();
 const flash = require("connect-flash");
 const passport = require("passport");
 require("./config/passport")(passport);
@@ -19,7 +18,7 @@ const messageFormat = require("./config/messages");
 const { userJoin, currentUser } = require("./config/chatUsers");
 
 //Sockets
-const adminName = "SlackcopyCat";
+const adminName = "SlackcopyCat ADMIN";
 let onlineUser = "";
 
 io.on("connection", (socket) => {
@@ -44,7 +43,7 @@ io.on("connection", (socket) => {
     const user = userJoin(userId, username, roomId);
     socket.join(user.roomId);
 
-    socket.emit("message", messageFormat(adminName, "Welcome to the Room!"));
+    socket.emit("message", messageFormat(adminName, `Welcome ${username}!`));
 
     socket.broadcast
       .to(user.roomId)
@@ -75,7 +74,14 @@ io.on("connection", (socket) => {
         messageFormat(user.username, message.text)
       );
     });
-
+    socket.on("disconnect", () => {
+      socket.broadcast
+        .to(user.roomId)
+        .emit(
+          "message",
+          messageFormat(adminName, `${user.username} has left the room.`)
+        );
+    });
     console.log("User connected");
   });
 
@@ -126,10 +132,5 @@ app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 
 app.use("/dashboard", require("./routes/dashboard"));
-
-app.get("/", (req, res) => {
-  res.render("index.ejs");
-  console.log("Up and running!");
-});
 
 server.listen(port, () => console.log(`server running on ${port}`));

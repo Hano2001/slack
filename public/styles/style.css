@@ -1,16 +1,24 @@
+/* LAYOUT AND GENERAL */
+
 body {
-  background-color: rgb(217, 243, 252);
+  background: linear-gradient(to bottom right, #e66465, #ffee02) no-repeat
+    center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
   background-color: orange;
   text-align: center;
+  border: solid rgb(255, 123, 0);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bolder;
+  color: orangered;
 }
 
 .navbar {
   border: solid rgb(255, 123, 0);
   background-color: orange;
-  /* border-radius: 20px; */
 }
 
 .navbar-item {
@@ -25,14 +33,24 @@ h1 {
   background-color: white;
   color: tomato;
 }
-input {
-  border: none;
-  padding: 0 1rem;
-  flex-grow: 1;
-  /* border-radius: 2rem; */
-  margin: 0.25rem;
+
+/* DASHBOARD */
+.offline_users_container,
+.online_users_container {
+  border: solid black;
+
+  margin: 5px;
+  width: 175px;
+  text-align: center;
+}
+.online_users_container {
+  background-color: rgb(12, 235, 12);
+}
+.offline_users_container {
+  background-color: rgb(253, 69, 13);
 }
 
+/* CHATROOMS */
 .chatRoom_container {
   border: solid black;
   float: left;
@@ -63,21 +81,6 @@ input {
 a {
   text-decoration: none;
 }
-
-.users_container {
-  border: solid black;
-  float: right;
-  margin: 5px;
-  width: 175px;
-  text-align: center;
-  background-color: darkseagreen;
-}
-
-.edit,
-.room_create_div {
-  display: none;
-}
-
 .room_form {
   background-color: orange;
   border: solid orange;
@@ -85,6 +88,14 @@ a {
   width: 500px;
   margin: auto;
 }
+
+/* HIDE CLASS, SEVERAL ROUTES */
+.edit,
+.room_create_div {
+  display: none;
+}
+
+/* ACCOUNT */
 
 .profile {
   height: 150px;
@@ -104,6 +115,8 @@ a {
   top: 25%;
   left: 35%;
 }
+
+/* ERROR/SUCCESS MSG */
 .success_message {
   margin-bottom: 50px;
   animation: fadeOut 2s forwards;
@@ -131,6 +144,8 @@ a {
     opacity: 0;
   }
 }
+
+/* CHAT ROOM */
 .chat-messages {
   border-radius: 10px;
   text-align: center;
@@ -159,7 +174,7 @@ a {
   width: 100%;
   position: absolute;
   background-color: red;
-  height: 50px;
+  height: 70px;
   bottom: 0;
   float: right;
 }
@@ -170,6 +185,13 @@ a {
   padding: 10px;
   border-radius: 5px;
   width: 90%;
+}
+
+.chat-msg {
+  border-radius: 5px;
+  width: 70%;
+  height: 60px;
+  word-wrap: break-word;
 }
 
 .message-sender {
@@ -187,6 +209,7 @@ a {
   margin-top: 15px;
   width: 500px;
   border: solid black;
+  word-wrap: break-word;
 }
 .message-div {
   border: solid black;
@@ -202,12 +225,57 @@ a {
   background-color: rgb(255, 239, 97);
 }
 
-.msg_delete {
+.room_delete {
   margin: auto;
   background-color: orangered;
 }
 
-.msg_delete_disabled {
+.room_delete_disabled {
   pointer-events: none;
-  background-color: grey;
+  color: grey;
+  background-color: lightgrey;
+}
+
+/* ADMIN PAGE */
+.admin-div {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border: solid black;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  height: 100px;
+}
+
+/* INDEX PAGE */
+.startDiv {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: orange;
+  animation-duration: 2s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.start-container {
+  margin-left: 50%;
+  height: 400px;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    background-color: green;
+  }
+  20% {
+    height: 200px;
+    background-color: purple;
+  }
+  50% {
+    border-radius: 50%;
+    background-color: red;
+  }
 }

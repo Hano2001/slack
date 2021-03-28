@@ -7,4 +7,15 @@ module.exports = {
       res.redirect("/users/login");
     }
   },
+
+  adminAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      if (req.user.username === "ADMIN") {
+        return next();
+      } else {
+        req.flash("error_msg", "You don't have ADMIN access to this page");
+        res.redirect("/dashboard");
+      }
+    }
+  },
 };

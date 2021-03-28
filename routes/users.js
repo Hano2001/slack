@@ -1,13 +1,9 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const http = require("http").Server(app);
 const User = require("../models/users");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { ensureAuthenticated } = require("../config/auth");
-
-const path = require("path");
 
 //Login
 
@@ -83,8 +79,6 @@ router.get("/logout", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      // console.log(obj);
-      // console.log(username);
     }
     res.redirect("/users/login");
   });

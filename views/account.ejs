@@ -1,3 +1,10 @@
+<div
+  id="info"
+  data-username="<%=user.username%>"
+  data-user_id="<%=user._id%>"
+  data-password="<%=user.password%>"
+></div>
+
 <div class="picDiv">
   <img class="profile" src="<%=user.picture%>" alt="" />
 
@@ -28,7 +35,7 @@
         <button type="submit">Update</button>
       </form>
     </td>
-    <td><button id="edit_name">Update name</button></td>
+    <td><button id="nameBtn">Update name</button></td>
   </tr>
   <tr>
     <th>Username</th>
@@ -44,7 +51,7 @@
         <button type="submit">Update</button>
       </form>
     </td>
-    <td><button id="edit_username" required>Update username</button></td>
+    <td><button id="usernameBtn" required>Update username</button></td>
   </tr>
   <tr>
     <th>Email</th>
@@ -60,9 +67,29 @@
         <button type="submit">Update</button>
       </form>
     </td>
-    <td><button id="edit_email">Update E-mail</button></td>
+    <td><button id="emailBtn">Update E-mail</button></td>
   </tr>
+  
+  <td>
+      <form
+        id="password_edit"
+        class="edit"
+        action="/dashboard/account/password"
+        method="POST"
+      >
+        <input name="password" type="password" required />
+        <button type="submit">Update</button>
+      </form>
+    </td>
+    <td><button id="passwordBtn">Update Password</button></td>
+  </tr>
+  <td>
+    <form action="/dashboard/account-delete/<%=user._id%>" method="get">
+      <button class="btn btn-danger" type="submit">Delete Account</button>
+    </form>
+  </td>
 </table>
+
 <%- include('partials/messages')%>
 
 <script src="../public/scripts/user-info.js"></script>

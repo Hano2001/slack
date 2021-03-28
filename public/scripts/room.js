@@ -35,6 +35,7 @@ function outputMessage(message) {
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   const adminDiv = document.createElement("div");
+
   div1.classList.add("user-message-div");
   div2.classList.add("message-div");
   adminDiv.classList.add("admin-message");
@@ -45,7 +46,7 @@ function outputMessage(message) {
   adminDiv.innerHTML = div2.innerHTML = div1.innerHTML = innerHTML;
   if (message.username === username) {
     document.getElementById("chat-messages").appendChild(div1);
-  } else if (message.username === "SlackcopyCat") {
+  } else if (message.username === "SlackcopyCat ADMIN") {
     document.getElementById("chat-messages").appendChild(adminDiv);
   } else {
     document.getElementById("chat-messages").appendChild(div2);

@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <div
+<div
   id="info"
   data-user_id="<%=user._id%>"
-  data-socket_id="<%=user.socketId%>";
+  data-socket_id="<%=user.socketId%>"
+  ;
 ></div>
-    <h1>Food shack slack</h1>
-    <%- include('partials/messages')%>
-    
+<h1>SlackcopyCat</h1>
+<%- include('partials/messages')%>
 
-    <div class="users_container">
-      <h5>Online users</h5>
-      <ul>
-        <% for(user of onlineusers) {%>
-        <li><%=user.username%></li>
-        <%}%>
-      </ul>
-    </div>
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="../public/scripts/dashboard.js"></script>
-    
-
-    
-    
-    
-</html>
+<div class="online_users_container">
+  <h5>Online users</h5>
+  <ul>
+    <% for(item of onlineUsers) {%>
+    <li
+      id="onlineUser"
+      style="<%= item.username === user.username ? 'border: solid green;' : 'null' %>"
+    >
+      <%=item.username%>
+    </li>
+    <%}%>
+  </ul>
+</div>
+<br />
+<div class="offline_users_container">
+  <h5>Offline users</h5>
+  <ul>
+    <% for(user of offlineUsers) {%>
+    <li><%=user.username%></li>
+    <%}%>
+  </ul>
+</div>
+<script src="./socket.io/socket.io.js"></script>
+<script src="../public/scripts/dashboard.js"></script>

@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/public/styles/style.css" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+  crossorigin="anonymous"
+/>
+<h1>ADMIN PAGE</h1>
+<% for(item of users) {%>
+
+<div class="admin-div">
+  <h4><%=item.username%> (<%=item.name%>)</h4>
+  <form action="/dashboard/admin/deleteuser/<%=item._id%>" method="get">
+    <button type="submit" class="btn btn-danger">DELETE USER</button>
+  </form>
+  <form action="/dashboard/admin/resetpassword/<%=item._id%>" method="get">
+    <button type="submit" class="btn btn-warning">RESET PASSWORD</button>
+  </form>
+</div>
+
+<%}%> <%- include('partials/messages')%>
+<h2><a href="/dashboard">Back to dashboard</a></h2>

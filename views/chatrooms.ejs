@@ -13,8 +13,8 @@
     <div>
       <div class="chatRoom_container">
         <h5>Chat Rooms</h5>
-        <!-- Ifall du undrar vade jag tvugen att slice i loopen, blev en tom div i listan på sidan annars! -->
-        <% for(room of rooms.slice(1)){%>
+
+        <% for(room of rooms){%>
         <div class="room_name_div">
           <a class="chat_link" href="/dashboard/chatrooms/<%=room._id%>">
             <p class="room_name"><%= room.name%></p></a
